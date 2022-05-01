@@ -27,6 +27,12 @@ app.get('/getConfig', async function(req,res){
   
 })
 
+
+app.get('/getLevel/:id', async function(req,res){
+  res.send(await db.getLevel(req.params.id))
+})
+
+
 // Start the server
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

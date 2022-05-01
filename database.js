@@ -14,4 +14,16 @@ async function getAll(){
 }
 
 
-module.exports = {getAll}
+async function getLevel(level){
+
+    const levelRef = db.collection('remember').doc(level);
+    const doc = await levelRef.get();
+    if (!doc.exists) {
+        return null
+    } else {
+        return doc.data()
+    }
+
+}
+
+module.exports = {getAll,getLevel}
