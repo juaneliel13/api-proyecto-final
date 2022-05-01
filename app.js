@@ -1,9 +1,11 @@
 const express = require("express")
 const notification = require("./notifications")
 
+const db = require("./database")
 const app = express()
 
 const bodyParser = require('body-parser');
+const { database } = require("firebase-admin")
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
@@ -20,6 +22,10 @@ app.post("/topic", function(req,res){
     notification.sendPushToTopic(data)
 })
 
+app.get('/getConfig', async function(req,res){
+  res.send(await db.getAll())
+  
+})
 
 // Start the server
 const PORT = process.env.PORT || 8080;
