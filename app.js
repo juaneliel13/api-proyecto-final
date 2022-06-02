@@ -22,13 +22,13 @@ app.post("/topic", function(req,res){
     notification.sendPushToTopic(data)
 })
 
-app.get('/getConfig', async function(req,res){
+app.get('/level', async function(req,res){
   res.send(await db.getAll())
   
 })
 
 
-app.get('/getLevel/:id', async function(req,res){
+app.get('/level/:id', async function(req,res){
   res.send(await db.getLevel(req.params.id))
 })
 

@@ -6,7 +6,7 @@ const db = getFirestore();
 
 async function getAll(){
     let arr = []
-    const snapshot = await db.collection('config').get()
+    const snapshot = await db.collection('level').get()
     snapshot.forEach(res=>{
         arr.push(res.data())
     });
@@ -16,7 +16,7 @@ async function getAll(){
 
 async function getLevel(level){
 
-    const levelRef = db.collection('remember').doc(level);
+    const levelRef = db.collection('level').doc(level);
     const doc = await levelRef.get();
     if (!doc.exists) {
         return null
