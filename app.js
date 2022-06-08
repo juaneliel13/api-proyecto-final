@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 app.post("/topic", function(req,res){
     res.send("Sending notification to a topic...")
-    res.header("Access-Control-Allow-Origin", "*");
     const data = {
         topic: req.body.topic,
         titulo: req.body.title,
@@ -24,14 +23,12 @@ app.post("/topic", function(req,res){
 })
 
 app.get('/level', async function(req,res){
-  res.header("Access-Control-Allow-Origin", "*");
   res.send(await db.getAll())
   
 })
 
 
 app.get('/level/:id', async function(req,res){
-  res.header("Access-Control-Allow-Origin", "*");
   res.send(await db.getLevel(req.params.id))
 })
 
