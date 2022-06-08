@@ -15,14 +15,13 @@ async function getAll(){
 
 
 async function getLevel(level){
-
-    const levelRef = db.collection('level').doc(level);
-    const doc = await levelRef.get();
-    if (!doc.exists) {
-        return null
-    } else {
-        return doc.data()
-    }
+    let arr = []
+    const levelRef = await db.collection('level').doc(level).collection("shelves").get();
+    levelRef.forEach(res=>{
+        arr.push(res.data())
+    });
+    return arr
+    
 
 }
 
