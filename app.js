@@ -35,9 +35,16 @@ app.get('/level/:id', async function(req,res){
   res.send(await db.getLevel(req.params.id))
 })
 
+app.post('/level/:id', async function(req,res){
+  res.header('Access-Control-Allow-Origin', '*');
+  await db.setRemember(req.params.id,req.body)
+  res.send("actualizado")
+})
+
+
 
 // Start the server
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
   console.log('Press Ctrl+C to quit.');
