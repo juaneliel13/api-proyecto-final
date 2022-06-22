@@ -34,7 +34,7 @@ async function getLevel(level){
 
 async function setRemember(level){
     const levelRef = await db.collection('level').doc(level).get();
-    console.log(levelRef);
+    console.log(levelRef,"referencia");
     // Set the 'capital' field of the city
   //  const res = await cityRef.update({capital: true});
 }
