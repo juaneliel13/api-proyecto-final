@@ -45,7 +45,8 @@ app.get('/level/:id', async function(req,res){
 
 app.post('/level/:id', async function(req,res){
   res.header('Access-Control-Allow-Origin', '*');
-  res.send(await db.setRemember(req.params.id,req.body))
+  await db.setRemember(req.params.id,req.body)
+  res.send("level "+req.params+" updated")
 })
 
 
