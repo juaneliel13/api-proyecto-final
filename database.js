@@ -33,9 +33,11 @@ async function getLevel(level){
 }
 
 async function setRemember(level,data){
-    const levelRef = await db.collection('level').doc(level).get();
+    const levelRef = await db.collection('level').doc(level);
     console.log(levelRef,data.remember);
     const res = await levelRef.update({dificultad: 2});
+
+
 }
 
 module.exports = {getAll,getLevel,getRemember,setRemember}
