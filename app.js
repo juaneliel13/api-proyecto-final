@@ -18,7 +18,7 @@ const corsOptions ={
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
-app.post("/topic", function(req,res){
+app.post("/action", function(req,res){
   res.header('Access-Control-Allow-Origin', '*');
     res.send("Sending notification to a topic...")
     const data = {
