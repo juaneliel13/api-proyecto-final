@@ -32,7 +32,7 @@ async function getLevel(level){
     return arr
 }
 
-async function setRemember(level){
+async function setRemember(level,data){
     const levelRef = await db.collection('level').doc(level).get();
     console.log(levelRef,data.remember);
     const res = await levelRef.update({dificultad: 2});
