@@ -52,7 +52,7 @@ app.post('/level/:id', async function(req,res){
 
 app.get('/level/remember/:id', async function(req,res){
   res.header('Access-Control-Allow-Origin', '*');
-  res.send(await db.getLevel(req.params.id))
+  res.send(await db.getRemember(req.params.id))
 })
 
 
