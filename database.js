@@ -13,9 +13,9 @@ async function getAll(){
     return arr
 }
 
-async function getRemember(){
+async function getRemember(level){
     let arr = []
-    const snapshot = await db.collection('remember').doc(1).get()
+    const snapshot = await db.collection('remember').doc(level).get("availableProducts")
     snapshot.forEach(res=>{
         arr.push(res.data())
     });

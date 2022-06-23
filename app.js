@@ -50,6 +50,11 @@ app.post('/level/:id', async function(req,res){
 })
 
 
+app.get('/level/remember/:id', async function(req,res){
+  res.header('Access-Control-Allow-Origin', '*');
+  res.send(await db.getLevel(req.params.id))
+})
+
 
 // Start the server
 const PORT = process.env.PORT || 8081;
