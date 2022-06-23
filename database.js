@@ -13,22 +13,15 @@ async function getAll(){
     return arr
 }
 
-async function getRemember(level){
-    let arr = []
-    const snapshot = await db.collection('level').doc(level).get()
-
-    const cityRef = db.collection('level').doc(level);
-    const doc = await cityRef.get();
+async function getRemember(level){   
+    const data = db.collection('level').doc(level);
+    const doc = await data.get();
     if (!doc.exists) {
-      console.log('No such document!');
+        return []
     } else {
-      console.log('Document data:', doc.data());
+        return doc.data().availableProducts
     }
-
-    snapshot.forEach(res=>{
-        arr.push(res.data().availableProducts)
-    });
-    return arr
+    
 }
 
 
