@@ -16,6 +16,15 @@ async function getAll(){
 async function getRemember(level){
     let arr = []
     const snapshot = await db.collection('level').doc(level).get()
+
+    const cityRef = db.collection('level').doc(level);
+    const doc = await cityRef.get();
+    if (!doc.exists) {
+      console.log('No such document!');
+    } else {
+      console.log('Document data:', doc.data());
+    }
+
     snapshot.forEach(res=>{
         arr.push(res.data().availableProducts)
     });
