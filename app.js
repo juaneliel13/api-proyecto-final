@@ -18,7 +18,7 @@ const corsOptions ={
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
-app.post("/action", function(req,res){
+app.post("/action",cors(corsOptions), function(req,res){
     res.header('Access-Control-Allow-Origin', '*');
     res.send("Sending notification to a topic...")
     const data = {
@@ -55,7 +55,7 @@ app.get('/level/remember/:id', async function(req,res){
   res.send(await db.getRemember(req.params.id))
 })
 
-app.post('/result', async function(req,res){
+app.post('/result', cors(corsOptions),async function(req,res){
   res.header('Access-Control-Allow-Origin', '*');
   res.send(await db.createResult(req.body))
 })
