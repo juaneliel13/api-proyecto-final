@@ -4,9 +4,6 @@ const notification = require("./notifications")
 const db = require("./database")
 const app = express()
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 const cors=require("cors");
 const corsOptions ={
