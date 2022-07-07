@@ -16,9 +16,9 @@ const corsOptions ={
    optionSuccessStatus:200,
 }
 
-app.use(cors({origin: 'http://localhost:3000'})) // Use this after the variable declaration
+app.use(cors(corsOptions)) // Use this after the variable declaration
 
-app.post("/action", function(req,res){
+app.post("/action", cors(corsOptions),function(req,res){
     res.send("Sending notification to a topic...")
     const data = {
         topic: req.body.topic,
@@ -50,7 +50,7 @@ app.get('/level/remember/:id', async function(req,res){
   res.send(await db.getRemember(req.params.id))
 })
 
-app.post('/result', async function(req,res){
+app.post('/result', cors(corsOptions),async function(req,res){
   res.send(await db.createResult(req.body))
 })
 
