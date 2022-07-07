@@ -5,19 +5,17 @@ const db = require("./database")
 const app = express()
 
 const bodyParser = require('body-parser');
-const { database } = require("firebase-admin")
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 const cors=require("cors");
 const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
 }
 
-
-
+app.use(cors(corsOptions)) // Use this after the variable declaration
 
 app.post("/action", cors(corsOptions),function(req,res){
     res.send("Sending notification to a topic...")
@@ -55,7 +53,6 @@ app.post('/result', cors(corsOptions),async function(req,res){
   res.send(await db.createResult(req.body))
 })
 
-app.use(cors(corsOptions)) // Use this after the variable declaration
 
 // Start the server
 const PORT = process.env.PORT || 8081;
