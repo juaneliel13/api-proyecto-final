@@ -16,7 +16,7 @@ const corsOptions ={
    optionSuccessStatus:200,
 }
 
-app.use(cors(corsOptions)) // Use this after the variable declaration
+app.use(cors({origin: 'http://localhost:3000'})) // Use this after the variable declaration
 
 app.post("/action", function(req,res){
     res.send("Sending notification to a topic...")
