@@ -1,4 +1,4 @@
-const express = require("express")
+/*const express = require("express")
 const notification = require("./notifications")
 
 const db = require("./database")
@@ -17,6 +17,18 @@ const corsOptions ={
 }
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
+*/
+var express = require('express'),
+    app = express();
+var bodyParser = require('body-parser');
+
+app.use(express.static(__dirname + '/public'));
+
+app.use(bodyParser.urlencoded({
+   extended: false
+}));
+
+app.use(bodyParser.json());
 
 app.post("/action", cors(corsOptions),function(req,res){
     res.send("Sending notification to a topic...")
