@@ -41,4 +41,11 @@ async function setRemember(level,data){
 
 }
 
-module.exports = {getAll,getLevel,getRemember,setRemember}
+async function createResult(level,data){
+    const results = await collection(db, "results")
+    const docRef = await addDoc(collection(db, "results"), {date:Timestamp.now(),name:data.name,tiempo:0});
+    return docRef.id
+
+}
+
+module.exports = {getAll,getLevel,getRemember,setRemember,createResult}
