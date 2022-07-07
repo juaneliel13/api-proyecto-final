@@ -5,18 +5,10 @@ const db = require("./database")
 const app = express()
 
 const bodyParser = require('body-parser');
-const { database } = require("firebase-admin")
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-const cors=require("cors");
-const corsOptions ={
-   origin:'*', 
-   credentials:false,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
-}
-
-app.use(cors(corsOptions)) // Use this after the variable declaration
+ // Use this after the variable declaration
 
 app.post("/action",cors(corsOptions), function(req,res){
     res.header('Access-Control-Allow-Origin', '*');
