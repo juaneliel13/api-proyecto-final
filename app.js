@@ -7,21 +7,15 @@ const app = express()
 
 const cors=require("cors");
 const corsOptions ={
-   origin:'https://app-viviant.herokuapp.com', 
+   origin:'*', 
    credentials:false,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
 }
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
-app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "'https://app-viviant.herokuapp.com'");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
 
 app.post("/action", function(req,res){
-   // res.header('Access-Control-Allow-Origin', '*');
     res.send("Sending notification to a topic...")
     const data = {
         topic: req.body.topic,
@@ -34,31 +28,26 @@ app.post("/action", function(req,res){
 })
 
 app.get('/level', async function(req,res){
-  res.header('Access-Control-Allow-Origin', '*');
   res.send(await db.getAll())
   
 })
 
 
 app.get('/level/:id', async function(req,res){
-  res.header('Access-Control-Allow-Origin', '*');
   res.send(await db.getLevel(req.params.id))
 })
 
 app.post('/level/:id', async function(req,res){
-  res.header('Access-Control-Allow-Origin', '*');
   await db.setRemember(req.params.id,req.body)
   res.send("level "+req.params+" updated")
 })
 
 
 app.get('/level/remember/:id', async function(req,res){
-  res.header('Access-Control-Allow-Origin', '*');
   res.send(await db.getRemember(req.params.id))
 })
 
 app.post('/result', async function(req,res){
- // res.header('Access-Control-Allow-Origin', '*');
   res.send(await db.createResult(req.body))
 })
 
