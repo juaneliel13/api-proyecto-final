@@ -7,7 +7,7 @@ const app = express()
 
 const cors=require("cors");
 const corsOptions ={
-   origin:'*', 
+   origin:'https://app-viviant.herokuapp.com', 
    credentials:false,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
 }
@@ -15,13 +15,13 @@ const corsOptions ={
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
 app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "'https://app-viviant.herokuapp.com'");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
 });
 
 app.post("/action", function(req,res){
-    res.header('Access-Control-Allow-Origin', '*');
+   // res.header('Access-Control-Allow-Origin', '*');
     res.send("Sending notification to a topic...")
     const data = {
         topic: req.body.topic,
@@ -58,7 +58,7 @@ app.get('/level/remember/:id', async function(req,res){
 })
 
 app.post('/result', async function(req,res){
-  res.header('Access-Control-Allow-Origin', '*');
+ // res.header('Access-Control-Allow-Origin', '*');
   res.send(await db.createResult(req.body))
 })
 
