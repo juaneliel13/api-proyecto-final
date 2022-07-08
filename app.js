@@ -47,7 +47,7 @@ app.get('/level/remember/:id', async function(req,res){
   res.send(await db.getRemember(req.params.id))
 })
 
-app.post('/result', cors(),async function(req,res){
+app.post('/result', cors(corsOptions),async function(req,res){
   res.send(await db.createResult(req.body))
 })
 
