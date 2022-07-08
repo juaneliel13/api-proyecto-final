@@ -7,7 +7,7 @@ const app = express()
 
 const cors=require("cors");
 const corsOptions ={
-   origin:'*', 
+   origin:'https://app-viviant.herokuapp.com', 
    credentials:false,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
 }
