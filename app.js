@@ -16,6 +16,10 @@ const corsOptions ={
 app.use(cors(corsOptions)) // Use this after the variable declaration
 */
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config()
+}
+
 const domainsFromEnv = process.env.CORS_DOMAINS || ""
 
 const whitelist = domainsFromEnv.split(",").map(item => item.trim())
