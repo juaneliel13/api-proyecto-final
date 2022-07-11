@@ -7,8 +7,7 @@ const app = express()
 
 const cors=require("cors");
 const corsOptions ={
-   origin:'*', 
-   credentials:false,            //access-control-allow-credentials:true
+   origin:'*',           //access-control-allow-credentials:true
    optionSuccessStatus:204,
 }
 
