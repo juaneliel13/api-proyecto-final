@@ -17,15 +17,19 @@ app.use(cors(corsOptions)) // Use this after the variable declaration
 
 
 app.post("/action", function(req,res){
-    res.send("Sending notification to a topic...")
-    const data = {
-        topic: req.body.topic,
-        titulo: req.body.title,
+  res.send("Sending notification to a topic...")
+  const data = {
+    topic: req.body.topic,
+    titulo: req.body.title,
         mensaje:req.body.body,
         data:req.body.data
 
-    }
-    notification.sendPushToTopic(data)
+      }
+      notification.sendPushToTopic(data)
+    })
+    
+app.post('/result', cors(corsOptions),async function(req,res){
+  res.send(await db.createResult(req.body))
 })
 
 app.get('/level', async function(req,res){
@@ -48,9 +52,6 @@ app.get('/level/remember/:id', async function(req,res){
   res.send(await db.getRemember(req.params.id))
 })
 
-/*app.post('/result', cors(corsOptions),async function(req,res){
-  res.send(await db.createResult(req.body))
-})*/
 
 
 // Start the server
