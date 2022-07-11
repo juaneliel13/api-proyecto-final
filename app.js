@@ -13,7 +13,7 @@ const corsOptions ={
 }
 
 
-app.use(cors(corsOptions)) // Use this after the variable declaration
+//app.use(cors(corsOptions)) // Use this after the variable declaration
 
 
 var allowCrossDomain = function(req, res, next) {
