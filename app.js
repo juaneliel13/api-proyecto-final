@@ -12,13 +12,14 @@ const corsOptions ={
    optionSuccessStatus:200,
 }
 
+app.use(cors(corsOptions)) // Use this after the variable declaration
 
 app.post("/action", function(req,res){
-  res.send("Sending notification to a topic...")
-  const data = {
-    topic: req.body.topic,
-    titulo: req.body.title,
-    mensaje:req.body.body,
+    res.send("Sending notification to a topic...")
+    const data = {
+        topic: req.body.topic,
+        titulo: req.body.title,
+        mensaje:req.body.body,
         data:req.body.data
 
     }
@@ -49,7 +50,6 @@ app.post('/result', cors(corsOptions),async function(req,res){
   res.send(await db.createResult(req.body))
 })
 
-app.use(cors(corsOptions)) // Use this after the variable declaration
 
 // Start the server
 const PORT = process.env.PORT || 8081;
