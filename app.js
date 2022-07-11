@@ -13,25 +13,9 @@ const corsOptions ={
 }
 
 
-//app.use(cors(corsOptions)) // Use this after the variable declaration
+app.use(cors(corsOptions)) // Use this after the variable declaration
 
 
-var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', '*');
-  res.header('Access-Control-Allow-Headers', '*');
-
-  // intercept OPTIONS method
-  if ('OPTIONS' == req.method) {
-    res.send(200);
-  }
-  else {
-    next();
-  }
-};
-
-
-app.use(allowCrossDomain);
 
 app.post('/result',async function(req,res){
 res.send(await db.createResult(req.body))
