@@ -6,7 +6,7 @@ const app = express()
 
 
 const cors=require("cors");
-/*const corsOptions ={
+const corsOptions ={
    origin:'*', 
    credentials:false,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
@@ -14,22 +14,7 @@ const cors=require("cors");
 
 
 app.use(cors()) // Use this after the variable declaration
-*/
 
-const whitelist = ["https://app-viviant.herokuapp.com","http://localhost:3000"]
-const corsOptions = {
- origin: function (origin, callback) {
-    if(!origin){//for bypassing postman req with  no origin
-      return callback(null, true);
-    }
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions));
 
 app.post("/action", function(req,res){
     res.send("Sending notification to a topic...")
