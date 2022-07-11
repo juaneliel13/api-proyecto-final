@@ -18,6 +18,8 @@ app.use(cors(corsOptions)) // Use this after the variable declaration
 
 
 app.post('/result',async function(req,res){
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+
 res.send(await db.createResult(req.body))
 })
 
