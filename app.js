@@ -16,7 +16,7 @@ const cors=require("cors");
 app.use(cors()) // Use this after the variable declaration
 */
 
-const whitelist = ["https://app-viviant.herokuapp.com","https://localhost:3000"]
+const whitelist = ["https://app-viviant.herokuapp.com","http://localhost:3000"]
 const corsOptions = {
  origin: function (origin, callback) {
     if(!origin){//for bypassing postman req with  no origin
