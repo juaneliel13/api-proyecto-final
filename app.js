@@ -16,9 +16,28 @@ const corsOptions ={
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
 
+const allowlist = ['http://localhost:3000', 'http://example.com'];
+
+    const corsOptionsDelegate = (req, callback) => {
+    let corsOptions;
+
+    let isDomainAllowed = whitelist.indexOf(req.header('Origin')) !== -1;
+   // let isExtensionAllowed = req.path.endsWith('.jpg');
+
+    if (isDomainAllowed) {
+        // Enable CORS for this request
+        corsOptions = { origin: true }
+    } else {
+        // Disable CORS for this request
+        corsOptions = { origin: false }
+    }
+    callback(null, corsOptions)
+}
+
+app.use(cors(corsOptionsDelegate));
+
 
 app.post('/result',async function(req,res){
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
 
 res.send(await db.createResult(req.body))
 })
