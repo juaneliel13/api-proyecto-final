@@ -13,9 +13,13 @@ const corsOptions ={
   "optionsSuccessStatus": 204
 }
 
-
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
+app.enableCors({
+  origin: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  credentials: true,
+});
 
 app.post('/result',async function(req,res){
 res.send(await db.createResult(req.body))
