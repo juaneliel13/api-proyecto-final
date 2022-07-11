@@ -8,12 +8,12 @@ const app = express()
 const cors=require("cors");
 const corsOptions ={
    origin:'*', 
-   credentials:false,            //access-control-allow-credentials:true
+   credentials:true,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
 }
 
 
-app.use(cors()) // Use this after the variable declaration
+app.use(cors(corsOptions)) // Use this after the variable declaration
 
 
 app.post("/action", function(req,res){
@@ -48,9 +48,9 @@ app.get('/level/remember/:id', async function(req,res){
   res.send(await db.getRemember(req.params.id))
 })
 
-app.post('/result', cors(corsOptions),async function(req,res){
+/*app.post('/result', cors(corsOptions),async function(req,res){
   res.send(await db.createResult(req.body))
-})
+})*/
 
 
 // Start the server
