@@ -6,20 +6,18 @@ const app = express()
 
 
 const cors=require("cors");
-const corsOpts = {
-  origin: '*',
-
-  methods: [
+const corsOptions ={
+   origin:'*', 
+   credentials:false,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+   methods: [
     'GET',
     'POST',
   ],
+}
 
-  allowedHeaders: [
-    'Content-Type',
-  ],
-};
 
-app.use(cors(corsOpts)) // Use this after the variable declaration
+app.use(cors(corsOptions)) // Use this after the variable declaration
 
 app.post("/action", function(req,res){
     res.send("Sending notification to a topic...")
