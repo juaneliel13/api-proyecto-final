@@ -13,7 +13,7 @@ const corsOptions ={
    methods: [
     'GET',
     'POST',
-    'OPTION'
+    'OPTIONS'
   ],
 }
 
