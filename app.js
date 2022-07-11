@@ -16,6 +16,11 @@ const corsOptions ={
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
 
+
+app.post('/result',async function(req,res){
+res.send(await db.createResult(req.body))
+})
+
 app.post("/action", function(req,res){
   res.send("Sending notification to a topic...")
   const data = {
@@ -27,10 +32,6 @@ app.post("/action", function(req,res){
       }
       notification.sendPushToTopic(data)
     })
-    
-app.post('/result', cors(corsOptions),async function(req,res){
-  res.send(await db.createResult(req.body))
-})
 
 app.get('/level', async function(req,res){
   res.send(await db.getAll())
