@@ -19,6 +19,7 @@ app.enableCors({
   origin: "*",
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   credentials: true,
+  optionsSuccessStatus:204
 });
 
 app.post('/result',async function(req,res){
