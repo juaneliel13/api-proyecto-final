@@ -42,7 +42,7 @@ async function setRemember(level,data){
 }
 
 async function createResult(level,data){
-    const docRef = await addDoc(collection(db, "results"), {date:Timestamp.now(),name:data.name,tiempo:0});
+    const docRef = await addDoc(db.collection(db, "results"), {date:Timestamp.now(),name:data.name,tiempo:0});
     return docRef.id
 
 }
