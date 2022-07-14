@@ -1,6 +1,5 @@
-const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
-const { getFirestore, Timestamp, FieldValue} = require('firebase-admin/firestore');
-const {  addDoc } = require("firebase/firestore");
+import { initializeApp, applicationDefault, cert } from 'firebase-admin/app';
+import { getFirestore, Timestamp, FieldValue, addDoc } from 'firebase-admin/firestore';
 
 const db = getFirestore();
 
@@ -47,4 +46,4 @@ async function createResult(level,data){
 
 }
 
-module.exports = {getAll,getLevel,getRemember,setRemember,createResult}
+export default {getAll,getLevel,getRemember,setRemember,createResult}
