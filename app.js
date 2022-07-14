@@ -4,13 +4,14 @@ const notification = require("./notifications")
 const db = require("./database")
 const app = express()
 
+app.use(bodyparser.json({limit: '50mb'}));
 
 
 
 
 
 app.post('/result',async function(req,res){
-  console.log(req)
+  console.log(req.body)
 res.send(await db.createResult(req.body))
 })
 
