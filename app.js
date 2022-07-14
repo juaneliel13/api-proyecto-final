@@ -3,21 +3,22 @@ const notification = require("./notifications")
 
 const db = require("./database")
 const app = express()
-var bodyParser = require('body-parser')
-var jsonParser = bodyParser.json()
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 
 
-
-app.post('/result',urlencodedParser,async function(req,res){
-  console.log(req.body)
+app.post('/result',async function(req,res){
+  console.log(req)
 res.send(await db.createResult(req.body))
 })
 
 
 
-app.post("/action", urlencodedParser,function(req,res){
+app.post("/action", function(req,res){
   res.send("Sending notification to a topic...")
   const data = {
     topic: req.body.topic,
