@@ -41,7 +41,7 @@ async function setRemember(level,data){
 
 }
 
-async function createResult(level,data){
+async function createResult(data){
     const docRef = await db.collection("results").add({date:Timestamp.now(),name:data.name,tiempo:0});
     return docRef.id
 
