@@ -10,7 +10,7 @@ const app = express()
 
 
 app.post('/result',async function(req,res){
-  console.log(req.body)
+  console.log(req)
 res.send(await db.createResult(req.body))
 })
 
