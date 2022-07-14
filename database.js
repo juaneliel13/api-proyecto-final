@@ -1,5 +1,6 @@
-import { initializeApp, applicationDefault, cert } from 'firebase-admin/app';
-import { getFirestore, Timestamp, FieldValue, addDoc } from 'firebase-admin/firestore';
+const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+const { getFirestore, Timestamp, FieldValue ,addDoc} = require('firebase-admin/firestore');
+
 
 const db = getFirestore();
 
@@ -41,9 +42,9 @@ async function setRemember(level,data){
 }
 
 async function createResult(level,data){
-    const docRef = await addDoc(db.collection(db, "results"), {date:Timestamp.now(),name:data.name,tiempo:0});
+    const docRef = await db.addDoc(db.collection(db, "results"), {date:Timestamp.now(),name:data.name,tiempo:0});
     return docRef.id
 
 }
 
-export default {getAll,getLevel,getRemember,setRemember,createResult}
+module.exports = {getAll,getLevel,getRemember,setRemember,createResult}

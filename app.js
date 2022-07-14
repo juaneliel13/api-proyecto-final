@@ -1,7 +1,7 @@
 const express = require("express")
 const notification = require("./notifications")
 
-const db = require("./database").default
+const db = require("./database")
 const app = express()
 
 
