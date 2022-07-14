@@ -3,21 +3,21 @@ const notification = require("./notifications")
 
 const db = require("./database")
 const app = express()
-
-app.use(bodyparser.json({limit: '50mb'}));
-
-
-
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
-app.post('/result',async function(req,res){
+
+
+app.post('/result',urlencodedParser,async function(req,res){
   console.log(req.body)
 res.send(await db.createResult(req.body))
 })
 
 
 
-app.post("/action", function(req,res){
+app.post("/action", urlencodedParser,function(req,res){
   res.send("Sending notification to a topic...")
   const data = {
     topic: req.body.topic,
