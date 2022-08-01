@@ -1,5 +1,5 @@
 const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
-const { getFirestore, Timestamp, FieldValue ,addDoc} = require('firebase-admin/firestore');
+const { getFirestore, Timestamp, FieldValue ,addDoc, updateDoc} = require('firebase-admin/firestore');
 
 
 const db = getFirestore();
@@ -47,4 +47,10 @@ async function createResult(data){
 
 }
 
-module.exports = {getAll,getLevel,getRemember,setRemember,createResult}
+async function updateResult(id,data){
+    const docRef = await db.collection("results").doc(id).updateDoc({date:Timestamp.now(),name:data.name,tiempo:data.time});
+    return docRef.id
+
+}
+
+module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult}

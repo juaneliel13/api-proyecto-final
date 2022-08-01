@@ -12,8 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 
 app.post('/result',async function(req,res){
-  console.log(req)
-res.send(await db.createResult(req.body))
+  res.send(await db.createResult(req.body))
 })
 
 
@@ -50,6 +49,9 @@ app.get('/level/remember/:id', async function(req,res){
   res.send(await db.getRemember(req.params.id))
 })
 
+app.put('/result/:id', async function(req,res) {
+  res.send(await db.updateResult(req.params.id,res.body))
+})
 
 
 // Start the server
