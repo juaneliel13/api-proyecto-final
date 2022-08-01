@@ -50,7 +50,7 @@ app.get('/level/remember/:id', async function(req,res){
 })
 
 app.put('/result/:id', async function(req,res) {
-  res.send(await db.updateResult(req.params.id,res.body))
+  res.send(await db.updateResult(req.params.id,req.body))
 })
 
 
