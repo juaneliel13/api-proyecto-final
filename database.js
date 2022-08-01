@@ -48,8 +48,8 @@ async function createResult(data){
 }
 
 async function updateResult(id,data){
-    const docRef = doc(db, "results", id);
-    let res = updateDoc(docRef,{date:Timestamp.now(),name:data.name,tiempo:data.time});
+    const docRef = db.collection("results").doc(id)
+    let res = docRef.set({date:Timestamp.now(),name:data.name,tiempo:data.time});
     return res
 }
 
