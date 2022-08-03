@@ -42,14 +42,15 @@ async function setRemember(level,data){
 }
 
 async function createResult(data){
-    const docRef = await db.collection("results").add({date:Timestamp.now(),name:data.name,tiempo:0});
+    
+    const docRef = await db.collection("results").add({date:Timestamp.now(),name:data.name,tiempo:0,productos:FieldValue.arrayUnion({})});
     return docRef.id
 
 }
 
 async function updateResult(id,data){
     const docRef = db.collection("results").doc(id)
-    let res = docRef.set({date:Timestamp.now(),name:data.name,tiempo:data.time});
+    let res = docRef.set({date:Timestamp.now(),name:data.name,tiempo:data.time,resultado:data.resultado});
     return res
 }
 
