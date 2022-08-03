@@ -50,7 +50,7 @@ async function createResult(data){
 
 async function updateResult(id,data){
     const docRef = db.collection("results").doc(id)
-    let res = docRef.set({date:Timestamp.now(),name:data.name,tiempo:data.time,resultado:FieldValue.arrayUnion(data.resultado)});
+    let res = docRef.set({date:Timestamp.now(),name:data.name,tiempo:data.time});
     return res
 }
 
