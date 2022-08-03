@@ -53,7 +53,7 @@ async function updateResult(id,data){
 
     let prod = {}
     data.productos.forEach((x,index)=>{
-        prod[index]=x
+        prod[index]=x.slice(0,x.indexOf("("))
     })
     let res = docRef.set({date:Timestamp.now(),name:data.name,tiempo:data.time,productos:FieldValue.arrayUnion(prod)});
     return res
