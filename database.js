@@ -50,7 +50,12 @@ async function createResult(data){
 
 async function updateResult(id,data){
     const docRef = db.collection("results").doc(id)
-    let res = docRef.set({date:Timestamp.now(),name:data.name,tiempo:data.time,productos:FieldValue.arrayUnion({0:'cereales'})});
+
+    let prod = {}
+    data.productos.forEach((x,index)=>{
+        prod[index]=x
+    })
+    let res = docRef.set({date:Timestamp.now(),name:data.name,tiempo:data.time,productos:FieldValue.arrayUnion(prod)});
     return res
 }
 
