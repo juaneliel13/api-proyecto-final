@@ -51,7 +51,7 @@ async function createResult(data){
 async function updateResult(id,data){
     const docRef = db.collection("results").doc(id)
 
-    let prod = {}
+    let prod = []
     data.productos.forEach((x,index)=>{
         prod[index]=x.slice(0,x.indexOf("("))
     })
