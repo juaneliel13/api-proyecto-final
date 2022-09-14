@@ -62,9 +62,9 @@ async function updateResult(id,data){
 
 async function searchResults(name){
     let arr = []
-    const docRef = db.collection("results").where('name', '==', name);
+    const docRef = await db.collection("results").where('name', '==', name).get();
     docRef.forEach(res=>{
-        arr.push("hola")
+        arr.push(res.data())
     });
     return arr;
 
