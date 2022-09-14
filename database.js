@@ -62,9 +62,8 @@ async function updateResult(id,data){
 
 async function searchResults(name){
     let arr = []
-    const docRef = db.collection("results")
-    let result = docRef.where('name', '==', name);
-    result.forEach(res=>{
+    const docRef = db.collection("results").where('name', '==', name);
+    docRef.forEach(res=>{
         arr.push("hola")
     });
     return arr;
