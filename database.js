@@ -59,4 +59,17 @@ async function updateResult(id,data){
     return res
 }
 
-module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult}
+
+async function searchResults(name){
+    let arr = []
+    const docRef = db.collection("results")
+    let result = docRef.where('name', '==', name);
+    result.forEach(res=>{
+        arr.push(res.data())
+    });
+    return arr;
+
+}
+
+
+module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults}

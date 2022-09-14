@@ -54,6 +54,11 @@ app.put('/result/:id', async function(req,res) {
   res.send(await db.updateResult(req.params.id,req.body))
 })
 
+app.put('/result', async function(req,res) {
+  console.log(req.query);
+  res.send(await db.searchResults(req.query.name))
+})
+
 
 // Start the server
 const PORT = process.env.PORT || 8081;
