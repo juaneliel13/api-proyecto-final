@@ -55,7 +55,7 @@ app.put('/result/:id', async function(req,res) {
 })
 
 app.put('/result', async function(req,res) {
-  console.log(req.query);
+  console.log(req.query.name);
   res.send(await db.searchResults(req.query.name))
 })
 
