@@ -54,7 +54,7 @@ app.put('/result/:id', async function(req,res) {
   res.send(await db.updateResult(req.params.id,req.body))
 })
 
-app.put('/result', async function(req,res) {
+app.get('/result', async function(req,res) {
   console.log(req.query.name);
   res.send(await db.searchResults(req.query.name))
 })
