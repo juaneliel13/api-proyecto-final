@@ -35,7 +35,7 @@ async function getLevel(level){
 }
 
 async function setRemember(level,data){
-    const levelRef = await db.collection('level').doc(level);
+    const levelRef = db.collection('level').doc(level);
     const res = await levelRef.update({availableProducts: data.remember});
     return res
 
@@ -65,7 +65,7 @@ async function searchResults(name){
     const docRef = db.collection("results")
     let result = docRef.where('name', '==', name);
     result.forEach(res=>{
-        arr.push(res.data())
+        arr.push("hola")
     });
     return arr;
 
