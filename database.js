@@ -62,7 +62,11 @@ async function updateResult(id,data){
 
 async function searchResults(name){
     let arr = []
-    const docRef = await db.collection("results").where('name', '==', name).get();
+    let docRef;
+    if(name)
+       docRef = await db.collection("results").where('name', '==', name).get();
+    else
+    docRef = await db.collection("results").get();    
     docRef.forEach(res=>{
         arr.push(res.data())
     });
