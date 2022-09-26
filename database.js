@@ -42,7 +42,7 @@ async function setRemember(level,data){
 }
 
 async function createResult(data){
-    
+    console.log(data);
     const docRef = await db.collection("results").add({date:new Date(),name:data.name,tiempo:0,productos:FieldValue.arrayUnion({})});
     return docRef.id
 
