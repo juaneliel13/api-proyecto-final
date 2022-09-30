@@ -74,7 +74,7 @@ async function searchResults(name){
 }
 
 async function updateLevel(level,shelf,products){
-    const levelRef = await (await db.collection('level').doc(level).collection("shelves").where('gondola','==',shelf).get()).docs()
+    const levelRef = await db.collection('level').doc(level).collection("shelves").where('gondola','==',shelf).get()
     console.log(levelRef)
     const res = await levelRef.set({productos:FieldValue.arrayUnion(products)});
     return res
