@@ -1,5 +1,5 @@
 const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
-const { getFirestore, Timestamp, FieldValue ,addDoc, updateDoc,doc,setDoc} = require('firebase-admin/firestore');
+const { getFirestore, Timestamp, FieldValue ,addDoc, updateDoc,doc} = require('firebase-admin/firestore');
 
 
 const db = getFirestore();
@@ -74,9 +74,9 @@ async function searchResults(name){
 }
 
 async function updateLevel(level,shelf,products){
-    const levelRef = await db.collection('level').doc(level).collection("shelves").where('gondola','==',shelf)
-    await setDoc(levelRef,products,{merge:true})
-  //  const res = await levelRef.set({productos:FieldValue.arrayUnion(products)});
+    const levelRef = await (await db.collection('level').doc(level).collection("shelves").where('gondola','==',shelf).get()).docs()
+    console.log(levelRef)
+    const res = await levelRef.set({productos:FieldValue.arrayUnion(products)});
     return res
 
 }
