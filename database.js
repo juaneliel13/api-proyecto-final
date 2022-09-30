@@ -78,6 +78,7 @@ async function updateLevel(level,shelf,products){
     const docRef = await db.collection('level').doc(level).collection("shelves").where("gondola","==",1).get()
     docRef.forEach(res=>{
         id = res.id
+        console.log(id);
     });
     let res = await db.collection('level').doc(level).collection("shelves").doc(id).update({productos:FieldValue.arrayUnion(products)});
     //const res = await levelRef.set({productos:FieldValue.arrayUnion(products)});
