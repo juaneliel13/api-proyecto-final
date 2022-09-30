@@ -75,12 +75,12 @@ async function searchResults(name){
 
 async function updateLevel(level,shelf,products){
     let id = null
-    const docRef = await (await db.collection('level').doc(level).collection("shelves").where("gondola","==",1).get()).docs()
+    const docRef = await db.collection('level').doc(level).collection("shelves").where("gondola","==",1).get()
     docRef.forEach(res=>{
         id = res.id
         console.log(id);
     });
-    let res = await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:FieldValue.arrayUnion(products)},{merge: true});
+   // let res = await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:FieldValue.arrayUnion(products)},{merge: true});
     //const res = await levelRef.set({productos:FieldValue.arrayUnion(products)});
     return res
 
