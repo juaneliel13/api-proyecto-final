@@ -62,6 +62,10 @@ app.put('/result/:id', async function(req,res) {
   res.send(await db.updateResult(req.params.id,req.body))
 })
 
+app.put('/level/:id/:shelf', async function(req,res) {
+  res.send(await db.updateLevel(req.params.id, req.params.shelf,req.body.products))
+})
+
 app.get('/result', async function(req,res) {
   console.log(req.query.name);
   res.send(await db.searchResults(req.query.name))

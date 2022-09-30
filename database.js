@@ -73,5 +73,12 @@ async function searchResults(name){
 
 }
 
+async function updateLevel(level,shelf,products){
+    const levelRef = await db.collection('level').doc(level).collection("shelves").where('gondola','==',shelf)
+    const res = await levelRef.update({productos:FieldValue.arrayUnion(products)});
+    return res
 
-module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults}
+}
+
+
+module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults,updateLevel}
