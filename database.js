@@ -63,7 +63,7 @@ async function searchResults(name){
     let arr = []
     let docRef;
     if(name)
-       docRef = await db.collection("results").where('name', '==', name).get();
+       docRef = await db.collection("results").where('name', '==', name).docs();
     else
     docRef = await db.collection("results").get();    
     docRef.forEach(res=>{
@@ -74,7 +74,7 @@ async function searchResults(name){
 }
 
 async function updateLevel(level,shelf,products){
-    const levelRef = await db.collection('level').doc(level).collection("shelves").where('gondola','==',shelf).get()
+    const levelRef = await db.collection('level').doc(level).collection("shelves").get()
     levelRef.forEach(res=>{
         console.log(res.data());
     });
