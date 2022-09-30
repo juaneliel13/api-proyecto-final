@@ -81,7 +81,12 @@ async function updateLevel(level,shelf,products){
         console.log(id);
     });
     console.log(products)
-    let res = await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:FieldValue.arrayUnion(products)},{merge: true});
+
+    let prod = {}
+    products.forEach((x,index)=>{
+        prod[index]=x
+    })
+    let res = await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:FieldValue.arrayUnion(prod)},{merge: true});
     //const res = await levelRef.set({productos:FieldValue.arrayUnion(products)});
     //return res
 
