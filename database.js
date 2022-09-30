@@ -80,7 +80,7 @@ async function updateLevel(level,shelf,products){
     });
     console.log(levelRef)
     //const res = await levelRef.set({productos:FieldValue.arrayUnion(products)});
-    return res
+    return
 
 }
 
