@@ -62,8 +62,8 @@ app.put('/result/:id', async function(req,res) {
   res.send(await db.updateResult(req.params.id,req.body))
 })
 
-app.put('/level/:id/:shelf', async function(req,res) {
-  res.send(await db.updateLevel(req.params.id, req.params.shelf,req.body.products))
+app.put('/level', async function(req,res) {
+  res.send(await db.updateLevel(req.query.id, req.query.shelf,req.body.products))
 })
 
 app.get('/result', async function(req,res) {
