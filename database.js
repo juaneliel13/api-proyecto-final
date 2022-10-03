@@ -75,10 +75,10 @@ async function searchResults(name){
 
 async function updateLevel(level,shelf,products){
     let id = null
+    console.log(shelf);
     const docRef = await db.collection('level').doc(level).collection("shelves").where("gondola","==",shelf).get()
     docRef.forEach(res=>{
         id = res.id
-        console.log(id);
     });
     let arr = []
     let keys = Object.keys(products)
