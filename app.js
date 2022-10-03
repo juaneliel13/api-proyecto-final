@@ -64,9 +64,9 @@ app.put('/result/:id', async function(req,res) {
 
 app.put('/level', async function(req,res) {
   req.body.updatedProducts.forEach(async e => {
-    console.log(e);
-    await db.updateLevel(req.query.id, 1,e.products)
+    await db.updateLevel(req.query.id, e.shelf,e.products)
   });
+  res.send()
 })
 
 app.get('/result', async function(req,res) {
