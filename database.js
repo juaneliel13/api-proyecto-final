@@ -82,6 +82,7 @@ async function updateLevel(level,shelf,products){
     let arr = []
     let keys = Object.keys(products)
     keys.forEach(e => {
+        if(products[e]!=0)
         arr.push(e+"-"+products[e])
     })
     let res = await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:arr},{merge: false});
