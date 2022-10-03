@@ -75,6 +75,7 @@ async function searchResults(name){
 
 async function updateLevel(level,shelf,products){
     let id = null
+    console.log(typeof level);
     const docRef = await db.collection('level').doc(level.toString()).collection("shelves").where("gondola","==",shelf).get()
     docRef.forEach(res=>{
         id = res.id
