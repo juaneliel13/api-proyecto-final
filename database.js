@@ -85,7 +85,8 @@ async function updateLevel(level,shelf,products){
         if(products[e]!=0)
         arr.push(e+"-"+products[e])
     })
-    let res = await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:arr},{merge: false});
+    if(arr.length != 0)
+        await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:arr},{merge: false});
     //const res = await levelRef.set({productos:FieldValue.arrayUnion(products)});
     //return res
 
