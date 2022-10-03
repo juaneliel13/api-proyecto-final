@@ -86,7 +86,7 @@ async function updateLevel(level,shelf,products){
         arr.push(e+"-"+products[e])
     })
     if(arr.length != 0){
-        console.log(arr);
+        console.log(level,id,arr);
         await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:arr},{merge: false});
     }
 }
