@@ -63,6 +63,7 @@ app.put('/result/:id', async function(req,res) {
 })
 
 app.put('/level', async function(req,res) {
+  console.log(Object.keys(req.body));
   req.body.updatedProducts.forEach(async e => {
     await db.updateLevel(req.query.id, e.shelf,e.products)
   });
