@@ -75,7 +75,7 @@ async function searchResults(name){
 
 async function updateLevel(level,shelf,products){
     let id = null
-    const levelExist = await (await db.collection('level').doc(level).get()).exists()
+    const levelExist = await db.collection('level').doc(level).get().exists()
     console.log(levelExist);
    /* const docRef = await levelRef.collection("shelves").where("gondola","==",parseInt(shelf)).get()
     docRef.forEach(res=>{
