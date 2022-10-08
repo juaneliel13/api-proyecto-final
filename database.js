@@ -93,9 +93,7 @@ async function updateLevel(level,shelf,products){
 
 
 async function existsLevel(level){
-    console.log("hola");
-    console.log(await db.collection('level').doc(level).get());
-    return await (await db.collection('level').doc(level).get()).exists
+    return await (await db.collection('level').doc(level.toString()).get()).exists
 }
 
 async function createLevel(level){
