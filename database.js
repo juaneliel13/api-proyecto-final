@@ -92,7 +92,7 @@ async function updateLevel(level,shelf,products){
             await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:arr},{merge: true});
         }
     } else {
-        const docRef = await db.collection('level').doc(level).create(await db.collection('shelves'))
+        const docRef = await db.collection('level').doc(level).set({"dificultad":level})
     }
 }
 
