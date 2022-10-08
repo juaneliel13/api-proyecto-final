@@ -64,10 +64,13 @@ app.put('/result/:id', async function(req,res) {
 
 app.put('/level', async function(req,res) {
   let index = Object.keys(req.body);
-  
-  index.forEach(async e => {
-    await db.updateLevel(req.query.id, e, req.body[e])
-  });
+  if(db.existsLevel(req.query.id)){
+    index.forEach(async e => {
+      await db.updateLevel(req.query.id, e, req.body[e])
+    });
+  }else{
+    db.createLevel(req.query.id)
+  }
   res.send()
 })
 
