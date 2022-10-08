@@ -75,21 +75,25 @@ async function searchResults(name){
 
 async function updateLevel(level,shelf,products){
     let id = null
-    const levelExist = await (await db.collection('level').doc(level).get()).exists
+    const levelExist = await db.collection('level').doc(level).get().exists
     console.log(levelExist);
-   /* const docRef = await levelRef.collection("shelves").where("gondola","==",parseInt(shelf)).get()
-    docRef.forEach(res=>{
-        id = res.id
-    });
-    let arr = []
-    let keys = Object.keys(products)
-    keys.forEach(e => {
-        if(products[e]!=0)
-         arr.push(e+"-"+products[e])
-    })
-    if(arr.length != 0){
-        await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:arr},{merge: true});
-    }*/
+    if(levelExist){
+        const docRef = await db.collection('level').doc(level).collection("shelves").where("gondola", "==", parseInt(shelf)).get()
+        docRef.forEach(res=>{
+            id = res.id
+        });
+        let arr = []
+        let keys = Object.keys(products)
+        keys.forEach(e => {
+            if(products[e]!=0)
+             arr.push(e+"-"+products[e])
+        })
+        if(arr.length != 0){
+            await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:arr},{merge: true});
+        }
+    } else {
+        
+    }
 }
 
 
