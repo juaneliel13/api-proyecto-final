@@ -93,7 +93,8 @@ async function updateLevel(level,shelf,products){
         }
     } else {
         const docRef = await db.collection('level').doc(level).set({"dificultad":parseInt(level),"name":"Nivel "+level})
-        await db.collection('level').doc(level).collection('shelves').add({gondola:1})
+        for(let i=1;i<=24;i++)
+            await db.collection('level').doc(level).collection('shelves').add({gondola:i})
 
     }
 }
