@@ -97,7 +97,9 @@ async function existsLevel(level){
 }
 
 async function createLevel(level){
+    console.log("pasa");
     await db.collection('level').doc(level).set({"dificultad":parseInt(level),"name":"Nivel "+level})
+    console.log("pasa2");
     for(let i=1;i<=24;i++)
         await db.collection('level').doc(level).collection('shelves').add({gondola:i})
 }
