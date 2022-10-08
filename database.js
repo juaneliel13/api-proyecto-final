@@ -93,6 +93,7 @@ async function updateLevel(level,shelf,products){
 
 
 async function existsLevel(level){
+    console.log("hola");
     return await (await db.collection('level').doc(level).get()).exists
 }
 
