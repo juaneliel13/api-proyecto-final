@@ -70,6 +70,9 @@ app.put('/level', async function(req,res) {
     });
   }else{
     await db.createLevel(req.query.id)
+    index.forEach(async e => {
+      await db.updateLevel(req.query.id, e, req.body[e])
+    });
   }
   res.send()
 })
