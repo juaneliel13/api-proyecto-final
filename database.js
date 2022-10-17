@@ -100,6 +100,6 @@ async function existsLevel(level){
 async function createLevel(level){
     await db.collection('level').doc(level).set({"dificultad":parseInt(level),"name":"Nivel "+level})
     for(let i=1;i<=24;i++)
-        await db.collection('level').doc(level).collection('shelves').add({gondola:i})
+        await db.collection('level').doc(level).collection('shelves').add({gondola:i,productos:[]})
 }
 module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults,updateLevel,existsLevel,createLevel}
