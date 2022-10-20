@@ -70,7 +70,7 @@ app.put('/level', async function(req,res) {
     index.forEach(async e => {
       await db.updateLevel(req.query.id, e, req.body[e])
       set.add(Object.keys(req.body[e]))
-      console.log(req.body[e]);
+      console.log(Object.keys(req.body[e]));
     });
   }else{
     await db.createLevel(req.query.id)
