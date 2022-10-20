@@ -79,7 +79,7 @@ app.put('/level', async function(req,res) {
       set.add(Object.keys(req.body[e]))
     });
   }
-  res.send(set)
+  res.send(...set)
 })
 
 app.get('/result', async function(req,res) {
