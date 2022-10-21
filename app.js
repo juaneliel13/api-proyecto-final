@@ -80,7 +80,7 @@ app.put('/level', async function(req,res) {
       set.add(Object.keys(req.body[e]))
     });
   }
-  console.log(...set);
+  //console.log(...set);
   res.send(...set)
 })
 
