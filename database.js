@@ -98,7 +98,7 @@ async function existsLevel(level){
 
 
 async function createLevel(level){
-    await db.collection('level').doc(level).set({"dificultad":parseInt(level),"name":"Nivel "+level})
+    await db.collection('level').doc(level).set({"dificultad":parseInt(level),"name":"Nivel "+level,availableProducts:[]})
     for(let i=1;i<=24;i++)
         await db.collection('level').doc(level).collection('shelves').add({gondola:i,productos:[]})
 }
@@ -108,29 +108,17 @@ async function updateToRemember(level,products){
     let keys = Object.keys(products)
     let doc = (await db.collection('level').doc(level).get()).data()
     let availableProducts = []
-    if(!doc.hasOwnProperty("availableProducts")){
-        keys.forEach(x =>{
-            Object.keys(products[x]).forEach(x => set.add(x))
-            //products[x]
-        });
-        set.forEach(x => {
-            availableProducts.push({cantidad:0,nombre:x})
+
+    keys.forEach(x =>{
+        Object.keys(products[x]).forEach(y => {
+            if(products[x][y] != 0)
+                set.add(y)
         })
-    } else {
-        keys.forEach(x =>{
-            Object.keys(products[x]).forEach(y => {
-                if(products[x][y] != 0)
-                    set.add(y)
-            })
-            //products[x]
-        });
-        set.forEach(x => {
-            if(doc.availableProducts.find(y => y.nombre == x)?.length == 0){
-                availableProducts.push({cantidad:0,nombre:x})
-            }
-        })
+    });
+    set.forEach(x => {
+        availableProducts.push({cantidad:0,nombre:x})
+    })
        
-    }
     if(availableProducts.length != 0){
         await db.collection('level').doc(level).set({availableProducts:availableProducts},{merge: true});
 
