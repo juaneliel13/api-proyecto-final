@@ -109,6 +109,17 @@ async function updateToRemember(level,products){
     let doc = (await db.collection('level').doc(level).get()).data()
     let availableProducts = []
 
+    let productsList = {}
+
+
+    keys.forEach(x =>{
+        Object.keys(products[x]).forEach(y => {
+            availableProducts[y] += products[x][y]
+        })
+    });
+
+    console.log(availableProducts);
+
     keys.forEach(x =>{
         Object.keys(products[x]).forEach(y => {
             if(products[x][y] != 0)
@@ -116,7 +127,12 @@ async function updateToRemember(level,products){
         })
     });
     set.forEach(x => {
-        availableProducts.push({cantidad:0,nombre:x})
+        let prod = doc.availableProducts.find(y => y.nombre == x)
+        let cant = 0
+        if(prod){
+            cant = prod[0].cantidad //falta ver si la cantidad que hay ahora es mayor o igual a esta
+        }
+            availableProducts.push({cantidad:prod.cantidad,nombre:x})
     })
        
     if(availableProducts.length != 0){
