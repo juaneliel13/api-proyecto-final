@@ -107,9 +107,11 @@ async function updateToRemember(products){
     let set = new Set();
     let keys = Object.keys(products)
     keys.forEach(x =>{
-        console.log(products[x]);
+        Object.keys(products[x]).forEach(x => set.add(x))
+
         //products[x]
     });
+    console.log(...set);
   //  set.add(Object.keys(products))
     //console.log(...set);
 }
