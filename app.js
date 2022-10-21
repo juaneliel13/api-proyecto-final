@@ -71,7 +71,6 @@ app.put('/level', async function(req,res) {
       await db.updateLevel(req.query.id, e, req.body[e])
       //console.log(Object.keys(req.body[e]));
       Object.keys(req.body[e]).forEach(x => set.add(x))
-      console.log(...set);
     });
   }else{
     await db.createLevel(req.query.id)
@@ -80,7 +79,7 @@ app.put('/level', async function(req,res) {
       set.add(Object.keys(req.body[e]))
     });
   }
-  //console.log(...set);
+  console.log(set.size);
   res.send(...set)
 })
 
