@@ -103,7 +103,7 @@ async function createLevel(level){
         await db.collection('level').doc(level).collection('shelves').add({gondola:i,productos:[]})
 }
 
-async function updateToRemember(products){
+async function updateToRemember(level,products){
     let set = new Set();
     let keys = Object.keys(products)
     keys.forEach(x =>{
@@ -112,6 +112,10 @@ async function updateToRemember(products){
         //products[x]
     });
     console.log(...set);
+    let docRef = await db.collection('level').doc(level)
+    docRef.forEach(res => {
+        console.log(res);
+    })
   //  set.add(Object.keys(products))
     //console.log(...set);
 }
