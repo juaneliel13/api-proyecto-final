@@ -102,4 +102,10 @@ async function createLevel(level){
     for(let i=1;i<=24;i++)
         await db.collection('level').doc(level).collection('shelves').add({gondola:i,productos:[]})
 }
-module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults,updateLevel,existsLevel,createLevel}
+
+async function updateToRemember(products){
+    let set = new Set();
+    set.add(Object.keys(products[0]))
+    console.log(...set);
+}
+module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults,updateLevel,existsLevel,createLevel,updateToRemember}
