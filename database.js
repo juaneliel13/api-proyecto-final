@@ -105,7 +105,8 @@ async function createLevel(level){
 
 async function updateToRemember(products){
     let set = new Set();
-    set.add(Object.keys(products[0]))
+    console.log(products);
+  //  set.add(Object.keys(products))
     console.log(...set);
 }
 module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults,updateLevel,existsLevel,createLevel,updateToRemember}
