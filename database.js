@@ -114,7 +114,7 @@ async function updateToRemember(level,products){
 
     keys.forEach(x =>{
         Object.keys(products[x]).forEach(y => {
-            console.log(y);
+            console.log(x,y);
             productsList[y] += products[x][y]
         })
     });
