@@ -69,9 +69,9 @@ app.put('/level', async function(req,res) {
   if(await db.existsLevel(req.query.id)){
     index.forEach(async e => {
       await db.updateLevel(req.query.id, e, req.body[e])
-      console.log(Object.keys(req.body[e]));
+      //console.log(Object.keys(req.body[e]));
       set.add(Object.keys(req.body[e]))
-      console.log(...set)
+      console.log(...set,"conjunto")
     });
   }else{
     await db.createLevel(req.query.id)
