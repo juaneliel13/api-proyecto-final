@@ -125,7 +125,7 @@ async function updateToRemember(level,products){
             //products[x]
         });
         set.forEach(x => {
-            if(doc.availableProducts.find(y => y.nombre == x).length == 0){
+            if(doc.availableProducts.find(y => y.nombre == x)?.length == 0){
                 availableProducts.push({cantidad:0,nombre:x})
             }
         })
