@@ -106,20 +106,35 @@ async function createLevel(level){
 async function updateToRemember(level,products){
     let set = new Set();
     let keys = Object.keys(products)
-    keys.forEach(x =>{
-        Object.keys(products[x]).forEach(x => set.add(x))
-
-        //products[x]
-    });
-    console.log(...set);
     let doc = (await db.collection('level').doc(level).get()).data()
     let availableProducts = []
     if(!doc.hasOwnProperty("availableProducts")){
+        keys.forEach(x =>{
+            Object.keys(products[x]).forEach(x => set.add(x))
+            //products[x]
+        });
         set.forEach(x => {
             availableProducts.push({cantidad:0,nombre:x})
         })
+    } else {
+        keys.forEach(x =>{
+            Object.keys(products[x]).forEach(y => {
+                if(products[x][y] != 0)
+                    set.add(y)
+            })
+            //products[x]
+        });
+        set.forEach(x => {
+            if(doc.availableProducts.find(y => y.nombre == x).length == 0){
+                availableProducts.push({cantidad:0,nombre:x})
+            }
+        })
+       
     }
-    console.log(availableProducts);
+    if(availableProducts.length != 0){
+        await db.collection('level').doc(level).set({availableProducts:availableProducts},{merge: true});
+
+    }
   //  set.add(Object.keys(products))
     //console.log(...set);
 }
