@@ -70,7 +70,7 @@ app.put('/level', async function(req,res) {
     index.forEach(async e => {
       await db.updateLevel(req.query.id, e, req.body[e])
       //console.log(Object.keys(req.body[e]));
-      set.add(Object.keys(req.body[e]))
+      set.add(...Object.keys(req.body[e]))
       console.log(...set,"conjunto");
     });
   }else{
