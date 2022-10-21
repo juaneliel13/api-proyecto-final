@@ -67,10 +67,11 @@ app.put('/level', async function(req,res) {
   let set = new Set();
 
   if(await db.existsLevel(req.query.id)){
+    let i =0;
     index.forEach(async e => {
       await db.updateLevel(req.query.id, e, req.body[e])
       //console.log(Object.keys(req.body[e]));
-      set.add('a')
+      set.add((i++).toString())
     })
     console.log(...set,"conjunto")
   }else{
