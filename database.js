@@ -118,7 +118,7 @@ async function updateToRemember(level,products){
            if(productsList.hasOwnProperty(y)){
                 productsList[y] += products[x][y]
            } else {
-                productsList[y] = 0
+                productsList[y] = products[x][y]
            }
         })
     });
