@@ -64,7 +64,7 @@ app.put('/result/:id', async function(req,res) {
 
 app.put('/level', async function(req,res) {
   let index = Object.keys(req.body);
-  let set = new Set();
+  let set = new Set([]);
 
   if(await db.existsLevel(req.query.id)){
     index.forEach(async e => {
@@ -78,8 +78,8 @@ app.put('/level', async function(req,res) {
       set.add(Object.keys(req.body[e]))
     });
   }
-  console.log("result",...set);
-  res.send(...set)
+  console.log("result",set.size);
+  res.send()
 })
 
 app.get('/result', async function(req,res) {
