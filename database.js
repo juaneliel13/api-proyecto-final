@@ -125,7 +125,7 @@ async function updateToRemember(level,products){
     // console.log(products[1]["cocaPlastico"]);
     console.log("resultado",productsList);
 
-    keys.forEach(x =>{
+  /*  keys.forEach(x =>{
         Object.keys(products[x]).forEach(y => {
             if(products[x][y] != 0)
                 set.add(y)
@@ -144,7 +144,7 @@ async function updateToRemember(level,products){
     if(availableProducts.length != 0){
         await db.collection('level').doc(level).set({availableProducts:availableProducts},{merge: true});
 
-    }
+    }*/
   //  set.add(Object.keys(products))
     //console.log(...set);
 }
