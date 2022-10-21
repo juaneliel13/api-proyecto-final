@@ -112,7 +112,7 @@ async function updateToRemember(level,products){
         //products[x]
     });
     console.log(...set);
-    let doc = await db.collection('level').doc(level).get().data()
+    let doc = (await db.collection('level').doc(level).get()).data()
     let availableProducts = []
     if(!doc.hasOwnProperty("availableProducts")){
         set.forEach(x => {
