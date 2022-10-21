@@ -112,7 +112,7 @@ async function updateToRemember(level,products){
         //products[x]
     });
     console.log(...set);
-    let docRef = await db.collection('level').doc(level)
+    let docRef = await db.collection('level').doc(level).get()
     docRef.forEach(res => {
         console.log(res);
     })
