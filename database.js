@@ -119,7 +119,7 @@ async function updateToRemember(level,products){
         })
     });
     // console.log(products[1]["cocaPlastico"]);
-    //console.log(productsList);
+    console.log(productsList);
 
     keys.forEach(x =>{
         Object.keys(products[x]).forEach(y => {
