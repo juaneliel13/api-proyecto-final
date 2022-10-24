@@ -125,9 +125,10 @@ async function updateToRemember(level,products){
 
     Object.keys(productsList).forEach(x => {
         let prod = doc.availableProducts.find(y => y.nombre == x)
-        console.log(x,prod);
         let cant = 0
-      //  if(prod){
+        if(prod){
+            console.log(x,prod);
+        }
             //cant = prod[0].cantidad //falta ver si la cantidad que hay ahora es mayor o igual a esta
       //  }
       //      availableProducts.push({cantidad:prod.cantidad,nombre:x})
