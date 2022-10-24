@@ -131,7 +131,8 @@ async function updateToRemember(level,products){
       //  }
       //      availableProducts.push({cantidad:prod.cantidad,nombre:x})
     })
-      console.log(Object.values(productsList)); 
+    let result = Object.keys(productsList).map(x => ({nombre:x,cantidad:productsList[x]}));
+      console.log(result); 
   //  if(availableProducts.length != 0){
   //      await db.collection('level').doc(level).set({availableProducts:availableProducts},{merge: true});
 
