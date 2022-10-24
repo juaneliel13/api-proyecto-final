@@ -125,26 +125,26 @@ async function updateToRemember(level,products){
     // console.log(products[1]["cocaPlastico"]);
     console.log("resultado",productsList);
 
-  /*  keys.forEach(x =>{
-        Object.keys(products[x]).forEach(y => {
-            if(products[x][y] != 0)
-                set.add(y)
-        })
-    });
-    set.forEach(x => {
-        let prod = doc.availableProducts.find(y => y.nombre == x)
-        let cant = 0
-        if(prod){
-          //  console.log(prod[0]);
+    // keys.forEach(x =>{
+    //     Object.keys(products[x]).forEach(y => {
+    //         if(products[x][y] != 0)
+    //             set.add(y)
+    //     })
+    // });
+    Object.keys(productsList).forEach(x => {
+        console.log(x,productList[x]);
+      //  let prod = doc.availableProducts.find(y => y.nombre == x)
+      //  let cant = 0
+      //  if(prod){
             //cant = prod[0].cantidad //falta ver si la cantidad que hay ahora es mayor o igual a esta
-        }
-            availableProducts.push({cantidad:prod.cantidad,nombre:x})
+      //  }
+      //      availableProducts.push({cantidad:prod.cantidad,nombre:x})
     })
        
     if(availableProducts.length != 0){
         await db.collection('level').doc(level).set({availableProducts:availableProducts},{merge: true});
 
-    }*/
+    }
   //  set.add(Object.keys(products))
     //console.log(...set);
 }
