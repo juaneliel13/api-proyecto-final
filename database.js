@@ -128,7 +128,7 @@ async function updateToRemember(level,products){
             productsList[x] =  prod[0].cantidad > productsList[x] ? productsList[x] : prod[0].cantidad
         }
     })
-    let result = Object.keys(productsList).filter(productsList[x] != 0).map(x => ({nombre:x,cantidad:productsList[x]}));
+    let result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:productsList[x]}));
     if(result.length != 0){
         await db.collection('level').doc(level).set({availableProducts:result},{merge: true});
     }
