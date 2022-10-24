@@ -127,17 +127,11 @@ async function updateToRemember(level,products){
         if(prod){
             productsList[x] =  prod[0].cantidad > productsList[x] ? productsList[x] : prod[0].cantidad
         }
-            //cant = prod[0].cantidad //falta ver si la cantidad que hay ahora es mayor o igual a esta
-      //  }
-      //      availableProducts.push({cantidad:prod.cantidad,nombre:x})
     })
     let result = Object.keys(productsList).map(x => ({nombre:x,cantidad:productsList[x]}));
       console.log(result); 
-  //  if(availableProducts.length != 0){
-  //      await db.collection('level').doc(level).set({availableProducts:availableProducts},{merge: true});
-
-  //  }
-  //  set.add(Object.keys(products))
-    //console.log(...set);
+    if(result.length != 0){
+        await db.collection('level').doc(level).set({availableProducts:availableProducts},{merge: true});
+    }
 }
 module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults,updateLevel,existsLevel,createLevel,updateToRemember}
