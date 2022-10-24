@@ -114,7 +114,6 @@ async function updateToRemember(level,products){
 
     keys.forEach(x =>{
         Object.keys(products[x]).forEach(y => {
-           // console.log(products[x][y]);
            if(productsList.hasOwnProperty(y)){
                 productsList[y] += products[x][y]
            } else {
@@ -122,19 +121,12 @@ async function updateToRemember(level,products){
            }
         })
     });
-    // console.log(products[1]["cocaPlastico"]);
     console.log("resultado",productsList);
 
-    // keys.forEach(x =>{
-    //     Object.keys(products[x]).forEach(y => {
-    //         if(products[x][y] != 0)
-    //             set.add(y)
-    //     })
-    // });
     Object.keys(productsList).forEach(x => {
-        console.log(x,productsList[x]);
-      //  let prod = doc.availableProducts.find(y => y.nombre == x)
-      //  let cant = 0
+        let prod = doc.availableProducts.find(y => y.nombre == x)
+        console.log(x,prod);
+        let cant = 0
       //  if(prod){
             //cant = prod[0].cantidad //falta ver si la cantidad que hay ahora es mayor o igual a esta
       //  }
