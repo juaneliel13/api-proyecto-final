@@ -121,23 +121,21 @@ async function updateToRemember(level,products){
            }
         })
     });
-    console.log("resultado",productsList);
-
     Object.keys(productsList).forEach(x => {
         let prod = doc.availableProducts.find(y => y.nombre == x)
         let cant = 0
         if(prod){
-            console.log(x,prod);
+            productsList[x] =  prod[0].cantidad > productsList[x] ? productsList[x] : prod[0].cantidad
         }
             //cant = prod[0].cantidad //falta ver si la cantidad que hay ahora es mayor o igual a esta
       //  }
       //      availableProducts.push({cantidad:prod.cantidad,nombre:x})
     })
-       
-    if(availableProducts.length != 0){
-        await db.collection('level').doc(level).set({availableProducts:availableProducts},{merge: true});
+      console.log(Object.values(productsList)); 
+  //  if(availableProducts.length != 0){
+  //      await db.collection('level').doc(level).set({availableProducts:availableProducts},{merge: true});
 
-    }
+  //  }
   //  set.add(Object.keys(products))
     //console.log(...set);
 }
