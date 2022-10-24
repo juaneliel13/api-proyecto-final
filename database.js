@@ -129,9 +129,8 @@ async function updateToRemember(level,products){
         }
     })
     let result = Object.keys(productsList).map(x => ({nombre:x,cantidad:productsList[x]}));
-      console.log(result); 
     if(result.length != 0){
-        await db.collection('level').doc(level).set({availableProducts:availableProducts},{merge: true});
+        await db.collection('level').doc(level).set({availableProducts:result},{merge: true});
     }
 }
 module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults,updateLevel,existsLevel,createLevel,updateToRemember}
