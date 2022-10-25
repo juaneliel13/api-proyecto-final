@@ -140,10 +140,10 @@ async function updateToRemember(level,products){
 
 async function getCurrentProduct(name){
     let ref = await db.collection("products").where("nombre", "==", name ).get()
-    ref.forEach(res=>{
-        console.log(res.data());
-    });
-    return 1;
+    if(ref.size != 0)
+        return ref[0].data().current;
+    
+
 }
 
 module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults,updateLevel,existsLevel,createLevel,updateToRemember}
