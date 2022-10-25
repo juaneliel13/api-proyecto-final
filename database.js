@@ -83,6 +83,7 @@ async function updateLevel(level,shelf,products){
     let arr = []
     let keys = Object.keys(products)
     keys.forEach(async e => {
+        console.log(e);
         let cant = await getCurrentProduct(e);
         
         for(let i = 0; i < products[e]; i++)
