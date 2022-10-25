@@ -87,9 +87,8 @@ async function updateLevel(level,shelf,products){
             let cant = await getCurrentProduct(e);
             if(!cant)
                 cant = 1;
-
                 for(let i = 0; i < products[e]; i++){
-                    arr.push(e+"-"+cant)
+                    arr.push(e+"-"+cant.toString())
             }
         }
     })
