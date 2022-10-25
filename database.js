@@ -142,6 +142,7 @@ async function updateToRemember(level,products){
 async function getCurrentProduct(name){
     let ref = await db.collection("products").where("nombre", "==", name ).get()
     ref.forEach(res=>{
+        console.log(res.data().current);
         return res.data().current;
     });
 
