@@ -85,7 +85,7 @@ async function updateLevel(level,shelf,products){
     keys.forEach(async e => {
         if( products[e] > 0){
             let cant = await getCurrentProduct(e);
-            console.log("cantidd",cant);
+            console.log("cantidd",e,cant);
             for(let i = 0; i < products[e]; i++)
                 arr.push(e+"-"+cant)
         }
