@@ -82,7 +82,9 @@ async function updateLevel(level,shelf,products){
     });
     let arr = []
     let keys = Object.keys(products)
-    keys.forEach(e => {
+    keys.forEach(async e => {
+        let cant = await getCurrentProduct(e);
+        
         for(let i = 0; i < products[e]; i++)
             arr.push(e+"-"+products[e])
         
@@ -134,4 +136,13 @@ async function updateToRemember(level,products){
         await db.collection('level').doc(level).set({availableProducts:result},{merge: true});
     }
 }
+
+async function getCurrentProduct(name){
+    let ref = await db.collection(products).where("nombre", "==", name ).get()
+    docRef.forEach(res=>{
+        console.log(res);
+    });
+    return 1;
+}
+
 module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults,updateLevel,existsLevel,createLevel,updateToRemember}
