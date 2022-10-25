@@ -85,7 +85,7 @@ async function updateLevel(level,shelf,products){
     keys.forEach(async e => {
         if( products[e] > 0){
             let cant = await getCurrentProduct(e);
-            console.log(cant);
+            console.log("cantidd",cant);
             for(let i = 0; i < products[e]; i++)
                 arr.push(e+"-"+cant)
         }
@@ -142,7 +142,6 @@ async function updateToRemember(level,products){
 async function getCurrentProduct(name){
     let ref = await db.collection("products").where("nombre", "==", name ).get()
     ref.forEach(res=>{
-        console.log(res.data().current);
         return res.data().current;
     });
 
