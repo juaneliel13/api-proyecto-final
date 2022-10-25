@@ -139,7 +139,7 @@ async function updateToRemember(level,products){
 
 async function getCurrentProduct(name){
     let ref = await db.collection("products").where("nombre", "==", name ).get()
-    docRef.forEach(res=>{
+    ref.forEach(res=>{
         console.log(res);
     });
     return 1;
