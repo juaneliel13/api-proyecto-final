@@ -85,14 +85,15 @@ async function updateLevel(level,shelf,products){
     keys.forEach(async e => {
         if( products[e] > 0){
             let cant = await getCurrentProduct(e);
-            if(!cant)
+            if(!cant){
                 cant = 1;
                 for(let i = 0; i < products[e]; i++){
+                    console.log(e+"-1");
                     arr.push(e+"-1")
+                }
             }
         }
     })
-    console.log(arr);
     if(arr.length != 0){
         await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:arr},{merge: true});
     }
