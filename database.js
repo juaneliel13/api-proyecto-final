@@ -88,8 +88,7 @@ async function updateLevel(level,shelf,products){
             if(!cant){
                 cant = 1;
                 for(let i = 0; i < products[e]; i++){
-                    console.log(e+"-1");
-                    arr.push(e+"-1")
+                    arr.push(e+"-"+cant)
                 }
             }
         }
