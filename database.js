@@ -148,4 +148,13 @@ async function getCurrentProduct(name){
 
 }
 
-module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults,updateLevel,existsLevel,createLevel,updateToRemember}
+async function getShelvesConfig(){
+    let arr = []
+    const levelRef = await db.collection('shelves').get();
+    levelRef.forEach(res=>{
+        arr.push(res.data())
+    });
+    return arr
+}
+
+module.exports = {getAll,getLevel,getRemember,setRemember,createResult,updateResult,searchResults,updateLevel,existsLevel,createLevel,updateToRemember,getShelvesConfig}

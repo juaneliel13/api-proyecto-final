@@ -83,8 +83,11 @@ app.put('/level', async function(req,res) {
 })
 
 app.get('/result', async function(req,res) {
-  console.log(req.query.name);
   res.send(await db.searchResults(req.query.name))
+})
+
+app.get('/shelvesConfig', async function(req,res) {
+  res.send(await db.getShelvesConfig())
 })
 
 
