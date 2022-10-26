@@ -127,13 +127,9 @@ async function updateToRemember(level,products){
         })
     });
     Object.keys(productsList).forEach(x => {
-        console.log(x,doc.availableProducts);
         let prod = doc.availableProducts.find(y => y.nombre == x)
-        console.log(prod);
-        let cant = 0
         if(prod){
-            console.log("prodc 0", prod[0]);
-            productsList[x] =  prod[0].cantidad > productsList[x] ? productsList[x] : prod[0].cantidad
+            productsList[x] =  prod.cantidad > productsList[x] ? productsList[x] : prod.cantidad
         }
     })
     let result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:productsList[x],max:productsList[x]}));
