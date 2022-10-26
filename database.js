@@ -129,7 +129,7 @@ async function updateToRemember(level,products){
     Object.keys(productsList).forEach(x => {
         let prod = doc.availableProducts.find(y => y.nombre == x)
         if(prod){
-            productsList[x] =  prod.cantidad > productsList[x] ? productsList[x] : prod.cantidad
+           // productsList[x] =  prod.cantidad > productsList[x] ? productsList[x] : prod.cantidad
             console.log(prod.cantidad > productsList[x] ? prod.cantidad :productsList[x],x);
         }
     })
