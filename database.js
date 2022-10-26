@@ -129,6 +129,7 @@ async function updateToRemember(level,products){
     Object.keys(productsList).forEach(x => {
         console.log(x,doc.availableProducts);
         let prod = doc.availableProducts.find(y => y.nombre == x)
+        console.log(prod);
         let cant = 0
         if(prod){
             console.log( prod[0]);
