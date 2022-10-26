@@ -132,7 +132,7 @@ async function updateToRemember(level,products){
         console.log(prod);
         let cant = 0
         if(prod){
-            console.log( prod[0]);
+            console.log("prodc 0", prod[0]);
             productsList[x] =  prod[0].cantidad > productsList[x] ? productsList[x] : prod[0].cantidad
         }
     })
