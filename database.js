@@ -130,6 +130,7 @@ async function updateToRemember(level,products){
         let prod = doc.availableProducts.find(y => y.nombre == x)
         let cant = 0
         if(prod){
+            console.log( prod[0]);
             productsList[x] =  prod[0].cantidad > productsList[x] ? productsList[x] : prod[0].cantidad
         }
     })
