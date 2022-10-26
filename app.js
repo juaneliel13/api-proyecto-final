@@ -69,7 +69,6 @@ app.put('/level', async function(req,res) {
   if(await db.existsLevel(req.query.id)){
     index.forEach(async e => {
       await db.updateLevel(req.query.id, e, req.body[e])
-      //console.log(Object.keys(req.body[e]));
       Object.keys(req.body[e]).forEach(x => set.add(x))
     });
   }else{
@@ -79,8 +78,8 @@ app.put('/level', async function(req,res) {
       set.add(Object.keys(req.body[e]))
     });
   }
-  //await db.updateToRemember(req.query.id,req.body)
-  res.send(...set)
+  await db.updateToRemember(req.query.id,req.body)
+  res.send()
 })
 
 app.get('/result', async function(req,res) {

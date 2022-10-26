@@ -114,8 +114,6 @@ async function updateToRemember(level,products){
     let set = new Set();
     let keys = Object.keys(products)
     let doc = (await db.collection('level').doc(level).get()).data()
-    let availableProducts = []
-
     let productsList = {}
 
 
@@ -137,6 +135,7 @@ async function updateToRemember(level,products){
     })
     let result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:productsList[x],max:productsList[x]}));
     if(result.length != 0){
+        console.log(level,result);
         await db.collection('level').doc(level).set({availableProducts:result},{merge: true});
     }
 }
