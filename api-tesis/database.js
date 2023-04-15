@@ -55,14 +55,14 @@ async function updateResult(id,data){
         data.productos.forEach((x,index)=>{
             prod[index]=x.slice(0,x.indexOf("("))
         })
-        let res = docRef.set({latency:data.latency, percentage:data.percentage});
+        let res = docRef.update({latency:data.latency, percentage:data.percentage});
         return res
     }else{
         let prod = {}
         data.productos.forEach((x,index)=>{
             prod[index]=x.slice(0,x.indexOf("("))
         })
-        let res = docRef.set({date:Timestamp.now(),tiempo:data.time,productos:FieldValue.arrayUnion(prod)});
+        let res = docRef.update({date:Timestamp.now(),tiempo:data.time,productos:FieldValue.arrayUnion(prod)});
         return res
     }
 }
