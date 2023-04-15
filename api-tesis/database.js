@@ -61,9 +61,11 @@ async function updateResult(id,data){
         return res
     }else{
         let prod = {}
-        data.productos.forEach((x,index)=>{
-            prod[index]=x.slice(0,x.indexOf("("))
-        })
+        if(data.productos){
+            data.productos.forEach((x,index)=>{
+                prod[index]=x.slice(0,x.indexOf("("))
+            })
+        }
         let res = docRef.update({date:Timestamp.now(),tiempo:data.time,productos:prod});
         return res
     }
