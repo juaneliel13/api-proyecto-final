@@ -53,10 +53,6 @@ async function updateResult(id,data){
     console.log(data)
 
     if(data.latency != null && data.percentage != null){
-        let prod = {}
-        data.productos.forEach((x,index)=>{
-            prod[index]=x.slice(0,x.indexOf("("))
-        })
         let res = docRef.update({latency:data.latency, percentage:data.percentage});
         return res
     }else{
