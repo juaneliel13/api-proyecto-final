@@ -50,6 +50,8 @@ async function createResult(data){
 async function updateResult(id,data){
     const docRef = db.collection("results").doc(id)
 
+    console.log(data)
+
     if(data.latency && data.percentage){
         let prod = {}
         data.productos.forEach((x,index)=>{
