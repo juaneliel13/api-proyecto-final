@@ -1,3 +1,0 @@
-[build]
-  command = "node app.js" # Comando para compilar su API
-  publish = "dist/" # Directorio de compilación de su API
