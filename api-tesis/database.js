@@ -52,7 +52,7 @@ async function updateResult(id,data){
 
     console.log(data)
 
-    if(data.latency && data.percentage){
+    if(data.latency != null && data.percentage != null){
         let prod = {}
         data.productos.forEach((x,index)=>{
             prod[index]=x.slice(0,x.indexOf("("))
