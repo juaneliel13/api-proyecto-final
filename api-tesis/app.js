@@ -42,7 +42,7 @@ app.post("/action", function(req,res){
     })
 
 app.get('/level', async function(req,res){
-  res.send("await db.getAll()")
+  res.send(await db.getAll())
   
 })
 
