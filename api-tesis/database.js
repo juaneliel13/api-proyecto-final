@@ -119,7 +119,7 @@ async function createLevel(level){
         await db.collection('level').doc(level).collection('shelves').add({gondola:i,productos:[]})
 }
 
-async function updateToRemember(level,products){
+async function updateToRemember(level,products, newLevel){
     let set = new Set();
     let keys = Object.keys(products)
     let doc = (await db.collection('level').doc(level).get()).data()
@@ -141,7 +141,12 @@ async function updateToRemember(level,products){
              productsList[x] =  prod.cantidad > productsList[x] ? prod.cantidad :productsList[x]
         }
     })
-    let result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:productsList[x],max:productsList[x]}));
+    let result
+    if(newLevel){
+        result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:0,max:productsList[x]}));
+    } else {
+        result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:productsList[x],max:productsList[x]}));
+    }
     if(result.length != 0){
         await db.collection('level').doc(level).set({availableProducts:result},{merge: true});
     }

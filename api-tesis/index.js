@@ -69,14 +69,15 @@ app.put('/level', async function(req,res) {
   if(await db.existsLevel(req.query.id)){
     index.forEach(async e => {
       await db.updateLevel(req.query.id, e, req.body[e])
+      await db.updateToRemember(req.query.id,req.body, true)
     });
   }else{
     await db.createLevel(req.query.id)
     index.forEach(async e => {
       await db.updateLevel(req.query.id, e, req.body[e])
+      await db.updateToRemember(req.query.id,req.body, false)
     });
   }
-  await db.updateToRemember(req.query.id,req.body)
   res.send()
 })
 

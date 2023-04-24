@@ -79,7 +79,7 @@ app.put('/level', async function(req,res) {
       await db.updateLevel(req.query.id, e, req.body[e])
     });
   }
-  await db.updateToRemember(req.query.id,req.body)
+  await db.updateToRemember(req.query.id,req.body, true)
   res.send()
 })
 
