@@ -129,9 +129,9 @@ async function updateToRemember(level,products, newLevel){
     keys.forEach(x =>{
         Object.keys(products[x]).forEach(y => {
            if(productsList.hasOwnProperty(y)){
-                productsList[y] += products[x][y]
+                productsList[y] += parseInt(products[x][y])
            } else {
-                productsList[y] = products[x][y]
+                productsList[y] = parseInt(products[x][y])
            }
         })
     });
