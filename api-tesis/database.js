@@ -52,8 +52,8 @@ async function updateResult(id,data){
 
     console.log(data)
 
-    if(data.latency != null && data.percentage != null){
-        let res = docRef.update({latency:data.latency, percentage:data.percentage});
+    if(data.percentage != null){
+        let res = docRef.update({percentage:data.percentage});
         return res
     }else{
         let prod = {}
@@ -62,7 +62,7 @@ async function updateResult(id,data){
                 prod[index]=x.slice(0,x.indexOf("("))
             })
         }
-        let res = docRef.update({date:Timestamp.now(),tiempo:data.time,productos:prod});
+        let res = docRef.update({date:Timestamp.now(),tiempo:data.time,productos:prod, tiempoEstimulo:data.stimulusTime});
         return res
     }
 }
