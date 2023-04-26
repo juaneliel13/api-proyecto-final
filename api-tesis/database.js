@@ -62,6 +62,7 @@ async function updateResult(id,data){
                 prod[index]=x.slice(0,x.indexOf("("))
             })
         }
+        console.log(data);
         let res = docRef.update({date:Timestamp.now(),tiempo:data.time,productos:prod, tiempoEstimulo:data.stimulusTime});
         return res
     }
