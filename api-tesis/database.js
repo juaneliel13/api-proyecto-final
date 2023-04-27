@@ -150,7 +150,7 @@ async function updateToRemember(level,products, newLevel){
         
         result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => {
             let prod = doc.availableProducts.find(y => y.nombre == x)
-            if(prod.hasOwnProperty("cantidad")){
+            if(prod){
                 return {nombre:x,cantidad:prod.cantidad > productsList[x] ? productsList[x] :prod.cantidad,max:productsList[x]}
             } else {
                 return {nombre:x,cantidad:0 ,max:productsList[x]}
