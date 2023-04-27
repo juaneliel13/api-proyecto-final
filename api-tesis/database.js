@@ -147,8 +147,12 @@ async function updateToRemember(level,products, newLevel){
     if(newLevel){
         result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:0,max:productsList[x]}));
     } else {
-        let prod = doc.availableProducts.find(y => y.nombre == x)
-        result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:prod.cantidad > productsList[x] ? productsList[x] :prod.cantidad,max:productsList[x]}));
+        
+        result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => {
+            let prod = doc.availableProducts.find(y => y.nombre == x)
+            return {nombre:x,cantidad:prod.cantidad > productsList[x] ? productsList[x] :prod.cantidad,max:productsList[x]}
+            }
+        );
     }
     if(result.length != 0){
         await db.collection('level').doc(level).set({availableProducts:result},{merge: true});
