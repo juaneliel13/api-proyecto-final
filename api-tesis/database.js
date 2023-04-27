@@ -141,6 +141,8 @@ async function updateToRemember(level,products, newLevel){
              productsList[x] =  prod.cantidad > productsList[x] ? prod.cantidad :productsList[x]
         }
     })
+
+    console.log(newLevel,productsList);
     let result
     if(newLevel){
         result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:0,max:productsList[x]}));
