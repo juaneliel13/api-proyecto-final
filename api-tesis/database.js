@@ -135,19 +135,20 @@ async function updateToRemember(level,products, newLevel){
            }
         })
     });
-    Object.keys(productsList).forEach(x => {
-        let prod = doc.availableProducts.find(y => y.nombre == x)
-        if(prod){
-             productsList[x] =  prod.cantidad > productsList[x] ? prod.cantidad :productsList[x]
-        }
-    })
+    // Object.keys(productsList).forEach(x => {
+    //     let prod = doc.availableProducts.find(y => y.nombre == x)
+    //     if(prod){
+    //          productsList[x] =  prod.cantidad > productsList[x] ? productsList[x] : prod.cantidad
+    //     }
+    // })
 
     console.log(newLevel,productsList);
     let result
     if(newLevel){
         result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:0,max:productsList[x]}));
     } else {
-        result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:productsList[x],max:productsList[x]}));
+        let prod = doc.availableProducts.find(y => y.nombre == x)
+        result = Object.keys(productsList).filter(y => productsList[y] != 0).map(x => ({nombre:x,cantidad:prod.cantidad > productsList[x] ? productsList[x] :prod.cantidad,max:productsList[x]}));
     }
     if(result.length != 0){
         await db.collection('level').doc(level).set({availableProducts:result},{merge: true});
