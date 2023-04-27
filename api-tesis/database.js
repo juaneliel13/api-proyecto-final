@@ -104,7 +104,7 @@ async function updateLevel(level,shelf,products){
         }
     }
     if(arr.length != 0){
-        await db.collection('level').doc(level).collection("shelves").doc(id).set({productos:arr},{merge: true});
+        await db.collection('level').doc(level).collection("shelves").doc(id).update({productos:arr});
     }
     
 }
