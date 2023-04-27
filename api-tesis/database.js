@@ -126,10 +126,6 @@ async function updateToRemember(level,products, newLevel){
     let doc = (await db.collection('level').doc(level).get()).data()
     let productsList = {}
 
-    if(keys.length == 0){
-        return
-    }
-
     keys.forEach(x =>{
         Object.keys(products[x]).forEach(y => {
            if(productsList.hasOwnProperty(y)){
