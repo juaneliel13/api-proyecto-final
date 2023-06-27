@@ -75,7 +75,7 @@ async function searchResults(name){
     if(name)
        docRef = await db.collection("results").where('name', '==', name).docs();
     else
-    docRef = await db.collection("results").limit(10).get();    
+    docRef = await db.collection("results").orderBy('date').limit(10).get();    
     docRef.forEach(res=>{
         arr.push(res.data())
     });
