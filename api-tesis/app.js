@@ -87,6 +87,8 @@ app.put('/level', async function(req,res) {
 app.get('/result', async function(req,res) {
   if(req.query.name)
     res.send(await db.searchResults(req.query.name))
+  else
+    res.send(await db.searchResults())
 })
 
 
